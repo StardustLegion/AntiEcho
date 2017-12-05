@@ -1,4 +1,5 @@
 // const path = require('path');
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const port = 3000;
@@ -7,7 +8,7 @@ const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/not-instagram');
 mongoose.connection.once('open', () => {
-  console.log('\nConnected with Not-Instagram Database');
+    console.log('\nConnected with Not-Instagram Database');
 });
 
 app.use(express.static(`${__dirname}/../`));
