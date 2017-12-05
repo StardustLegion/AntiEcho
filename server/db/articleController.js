@@ -3,15 +3,15 @@ const { Queries } = require('./queryModel.js');
 
 
 function addToHeadlines(req, res, next) {
-    Articles.forEach(x => {
-        Articles.create(x);
+    req.body.forEach(x => {
+        Articles.create(x); // needs to be changed
     });
     next();
 }
 
 function addToQueries(req, res, next) {
-    Queries.forEach(x => {
-        Queries.create(x);
+    req.body.forEach(x => {
+        Queries.create(x); // needs to be changed
     });
     next();
 }
