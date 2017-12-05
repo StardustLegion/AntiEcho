@@ -7,10 +7,7 @@ const app = express();
 // const mongoose = require('mongoose');
 const request = require('request');
 
-mongoose.connect('mongodb://localhost/not-instagram');
-mongoose.connection.once('open', () => {
-    console.log('\nConnected with Not-Instagram Database');
-});
+require('dotenv').config();
 
 app.use(express.static(`${__dirname}/../`));
 
