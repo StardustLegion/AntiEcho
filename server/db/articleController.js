@@ -1,36 +1,38 @@
-const { TopHeadlines, QueryNews } = require('./articleModel.js');
+const { Articles } = require('./articleModel.js');
+const { Queries } = require('./queryModel.js');
 
-// Saving data to collection TopHeadlines
+
 function addToHeadlines(req, res, next) {
-    data.forEach(x => {
-        TopHeadlines.create(x);
+    Articles.forEach(x => {
+        Articles.create(x);
     });
+    next();
 }
 
-// Saving data to collection QueryNews
 function addToQueries(req, res, next) {
-    data.forEach(x => {
-        QueryNews.create(x);
+    Queries.forEach(x => {
+        Queries.create(x);
     });
+    next();
 }
 
-// Getting data from collection TopHeadlines
 function getFromHeadlines(req, res, next) {
     const search = req.params.id;
 
-    TopHeadlines.find({ query: search }, (err, result) => {
+    Articles.find({ query: search }, (err, result) => {
         if (err) throw new Error(err);
-        return result;
+        if (result.length > 0) res.send(result);
+        else next();
     });
 }
 
-// Getting data from collection QueryNews
 function getFromQueries(req, res, next) {
     const search = req.params.id;
 
-    QueryNews.find({ query: search }, (err, result) => {
+    Queries.find({ query: search }, (err, result) => {
         if (err) throw new Error(err);
-        return result;
+        if (result.length > 0) res.send(result);
+        else next();
     });
 }
 
