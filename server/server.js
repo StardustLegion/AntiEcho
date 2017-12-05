@@ -21,7 +21,6 @@ app.use(bodyParser.json());
 app.get('/api/articles', (req, res) => {
   const sources = 'breitbart-news,the-huffington-post,the-new-york-times,the-wall-street-journal,fox-news';
   const options = {
-    // url: `https://github.com/login/oauth/access_token?code=${req.query.code}&client_id=${process.env.CLIENTID}&client_secret=${process.env.SECRET}`,
     url: `https://newsapi.org/v2/everything?sources=${sources}&from=2017-12-01&to=2017-12-04&q=${req.query.q}&apiKey=${process.env.NEWS_APIKEY}`,
     headers: { Accept: 'application/json' },
   };
