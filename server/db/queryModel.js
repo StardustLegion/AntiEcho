@@ -22,6 +22,11 @@ const sourceSchema = new Schema({
     articles: [articleSchema],
 });
 
-const Articles = mongoose.model("Articles", sourceSchema)
+const querySchema = new Schema({
+    query: String,
+    sources: [sourceSchema],
+});
 
-module.export = { Articles };
+const Queries = mongoose.model('Queries', querySchema);
+
+module.export = { Queries };
