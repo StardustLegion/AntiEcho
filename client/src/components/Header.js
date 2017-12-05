@@ -1,11 +1,15 @@
 import React from 'react';
 import Search from './Search';
 
-const Header = () => {
+const Header = props => {
   return (
     <div>
       HEADER
-      <Search />
+      <Search
+        steering = {props.steering}
+        searchArticles = {props.searchArticles}
+        handleSearch = {props.handleSearch}
+      />
     </div>
   );
 };

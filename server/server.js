@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const port = 3000;
 const app = express();
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const request = require('request');
 
 mongoose.connect('mongodb://localhost/not-instagram');
@@ -17,15 +17,38 @@ app.use(express.static(`${__dirname}/../`));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// app.get('/', (req, res) => {
-//   res.sendFile(path.resolve(`${__dirname}/../index.html`));
-// });
+// get news source names from https://newsapi.org/sources
+// set rankings based on http://www.businessinsider.com/most-and-least-trusted-news-outlets-in-america-2017-3
+const sourcesObj = {
+    'breitbart-news': 9,
+    'the-huffington-post': -8,
+    'the-new-york-times': -5,
+    'the-wall-street-journal': 0,
+    'the-economist': -1,
+    'fox-news': 4,
+};
+const sources = Object.keys(sourcesObj).join(',');
+const today = new Date();
+const dd = today.getDate();
+const mm = today.getMonth() + 1;
+const yyyy = today.getFullYear();
 
-// app.get('/api/articles',)
+// do we ever really need a get route
 app.get('/api/articles', (req, res) => {
-    const sources = 'breitbart-news,the-huffington-post,the-new-york-times,the-wall-street-journal,fox-news';
     const options = {
-        url: `https://newsapi.org/v2/everything?sources=${sources}&from=2017-12-01&to=2017-12-04&q=${req.query.q}&apiKey=${process.env.NEWS_APIKEY}`,
+        url: `https://newsapi.org/v2/everything?sources=${sources}&from=${yyyy}-${mm}-${dd - 2}&to=2017-${mm}-${dd}&q=${req.query.q}&apiKey=${process.env.NEWS_APIKEY}`,
+        headers: { Accept: 'application/json' },
+    };
+    request(options, (error, response, body) => {
+        if (error) res.send(error);
+        res.send(JSON.parse(body).articles);
+    });
+});
+
+// middleware from database checks if database contains query
+app.post('/api/articles', (req, res) => {
+    const options = {
+        url: `https://newsapi.org/v2/everything?sources=${sources}&from=${yyyy}-${mm}-${dd - 2}&to=2017-${mm}-${dd}&q=${req.body.q}&apiKey=${process.env.NEWS_APIKEY}`,
         headers: { Accept: 'application/json' },
     };
     request(options, (error, response, body) => {
