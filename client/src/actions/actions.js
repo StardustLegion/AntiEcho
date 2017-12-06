@@ -2,35 +2,35 @@ import * as types from '../constants/actionTypes';
 // const request = require('request');
 
 export const searchArticles = (response) => ({
-  type: types.SEARCH_ARTICLES,
-  payload: response,
+    type: types.SEARCH_ARTICLES,
+    payload: response,
 });
 
 export const handleSearch = (value) => ({
-  type: types.HANDLE_SEARCH,
-  payload: value,
+    type: types.HANDLE_SEARCH,
+    payload: value,
 });
 
 export const sliderChange = (value) => ({
-  type: types.SLIDER_CHANGE,
-  payload: value,
+    type: types.SLIDER_CHANGE,
+    payload: value,
 });
 
 export function onSubmit() {
-  return function (dispatch, getState) {
-    const stateText = getState().steering.textValue;
-    const request = new Request(`http://localhost:3000/api/articles/?q=${stateText}`);
-    return fetch(request)
-      .then(response => response.json())
-      .then(json => dispatch(searchArticles(json)))
-      .catch(err => {
-        console.log(err);
-      })
-  }
+    return function(dispatch, getState) {
+        const stateText = getState().steering.textValue;
+        const request = new Request(`http://localhost:3000/api/articles/?q=${stateText}`);
+        return fetch(request)
+            .then(response => response.json())
+            .then(json => dispatch(searchArticles(json)))
+            .catch(err => {
+                console.log(err);
+            })
+    }
 }
 
 export const fetchPosts = () => ({
-  type: types.FETCH_POSTS,
+    type: types.FETCH_POSTS,
 })
 
 
@@ -46,4 +46,4 @@ export const fetchPosts = () => ({
 // }
 
 
-    //have fetch call to node server, once you get sucessful response, dispatch searchArticles
+//have fetch call to node server, once you get sucessful response, dispatch searchArticles
