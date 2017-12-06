@@ -17,8 +17,6 @@ articleController.addToHeadlines = (req, res, next) => { // needs to be fixed
 };
 
 articleController.addToQueries = (req, res, next) => {
-    console.log('got here hello');
-
     const search = req.query.q;
 
     const result = {
@@ -41,7 +39,6 @@ articleController.getFromHeadlines = (req, res, next) => { // needs to be fixed
 };
 
 articleController.getFromQueries = (req, res, next) => {
-
     const search = req.query.q;
 
     Queries.find({ query: search }, (err, result) => {
