@@ -6,11 +6,19 @@ import thunkMiddleware from 'redux-thunk';
 const loggerMiddleware = createLogger();
 
 const store = createStore(
+<<<<<<< HEAD
     reducers,
     composeWithDevTools(),
     applyMiddleware(
         thunkMiddleware,
     ),
+=======
+  reducers,
+  composeWithDevTools(),
+  applyMiddleware(
+    thunkMiddleware
+  ),
+>>>>>>> 79e67eeeb24e9811098a0783b3d97fede257ce26
 
 );
 

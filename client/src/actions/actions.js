@@ -16,26 +16,6 @@ export const sliderChange = (value) => ({
     payload: value,
 });
 
-// export const onSubmit = () => {//action informing reducers that request began
-//   console.log('onsubmit triggered')
-//   console.log('getting here')
-//   return function(dispatch) {
-//
-//     return fetch(`localhost:3000/api/articles`, {
-//       method: 'POST',
-//       headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify({q: 'trump'})
-//     })
-//       .then(response => response.json())
-//       .then(json => dispatch(searchArticles(json)))
-//     // const { textValue } = getState()
-//   }
-//
-// }
-
 export function onSubmit() {
     return function(dispatch, getState) {
         const stateText = getState().steering.textValue;
