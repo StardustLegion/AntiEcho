@@ -1,8 +1,9 @@
 const { Articles } = require('./articleModel.js');
-const { Queries } = require('./queryModel.js');
+const Queries = require('./queryModel');
 
+const articleController = {};
 
-function addToHeadlines(req, res, next) { // needs to be fixed
+articleController.addToHeadlines = (req, res, next) => { // needs to be fixed
     const result = {
         source: {
             id: req.body[0].source.id,
@@ -13,38 +14,41 @@ function addToHeadlines(req, res, next) { // needs to be fixed
 
     Queries.create(result);
     next();
-}
+};
 
-function addToQueries(req, res, next) {
-    const search = req.params.id;
+articleController.addToQueries = (req, res, next) => {
+    const search = req.query.q;
 
+    console.log(req.body);
+    console.log(res.locals.apiData);
     const result = {
         query: search,
-        articles: req.body,
+        articles: res.locals.apiData,
     };
 
     Queries.create(result);
     next();
-}
+};
 
-function getFromHeadlines(req, res, next) { // needs to be fixed
-    const search = req.params.id;
+articleController.getFromHeadlines = (req, res, next) => { // needs to be fixed
+    const search = req.params.q;
 
     Articles.find({ query: search }, (err, result) => {
         if (err) throw new Error(err);
         if (result.length > 0) res.send(result);
         else next();
     });
-}
+};
 
-function getFromQueries(req, res, next) {
-    const search = req.params.id;
+articleController.getFromQueries = (req, res, next) => {
+
+    const search = req.query.q;
 
     Queries.find({ query: search }, (err, result) => {
-        if (err) throw new Error(err);
-        if (result.length > 0) res.send(result);
-        else next();
+        if (err) res.send(err);
+        if (result.length === 0) next();
+        else res.send(result);
     });
-}
+};
 
-module.exports = { addToHeadlines, addToQueries, getFromQueries, getFromHeadlines };
+module.exports = articleController;

@@ -1,11 +1,8 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-mongoose.connect(`mongodb://${process.env.MONGO_USER}:<${process.env.MONGO_PASSWORD}>@ds044667.mlab.com:44667/news`);
-mongoose.connection.once('open', () => {
-    console.log('Connected with MongoDB MLab');
-});
+//const Schema = mongoose.Schema;
 
-const articleSchema = new Schema({
+
+const articleSchema = mongoose.Schema({
     source: {
         id: String,
         name: String,
@@ -15,17 +12,16 @@ const articleSchema = new Schema({
     description: String,
     url: String,
     urlToImage: String,
-    publishedAt: Date,
+    publishedAt: String,
 });
 
-const querySchema = new Schema({
-    query: String,
-    articles: [articleSchema],
-});
+// const querySchema = new Schema({
+//     query: String,
+//     articles: [articleSchema],
+// });
 
-const Queries = mongoose.model('Queries', querySchema);
-
-module.export = { Queries };
+// module.export = mongoose.model('Queries', querySchema);
+module.exports = mongoose.model('Article', articleSchema);
 
 
 // const sourceSchema = new Schema({
