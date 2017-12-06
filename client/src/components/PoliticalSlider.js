@@ -13,6 +13,9 @@ const PoliticalSlider = (props) => {
         value={props.sliderValue}
         onChange={(e, val) => props.sliderChange(val)}
       />
+      <div id="sliderText">
+        Adjust the slider to see news from across the aisle.
+      </div>
     </div>
   );
 };
