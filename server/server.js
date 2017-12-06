@@ -4,10 +4,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const port = 3000;
 const app = express();
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const request = require('request');
+const articleController = require('./db/articleController');
 
-require('dotenv').config();
+mongoose.connect(`mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@ds044667.mlab.com:44667/news`);
+mongoose.connection.once('open', () => {
+    console.log('Connected with MongoDB MLab');
+});
+
 
 app.use(express.static(`${__dirname}/../`));
 
@@ -31,7 +36,7 @@ const mm = today.getMonth() + 1;
 const yyyy = today.getFullYear();
 
 // do we ever really need a get route
-app.get('/api/articles', (req, res) => {
+app.get('/api/articles', articleController.getFromQueries, (req, res, next) => {
     const options = {
         url: `https://newsapi.org/v2/everything?sources=${sources}&from=${yyyy}-${mm}-${dd - 2}&to=2017-${mm}-${dd}&q=${req.query.q}&apiKey=${process.env.NEWS_APIKEY}`,
         headers: { Accept: 'application/json' },
@@ -39,11 +44,13 @@ app.get('/api/articles', (req, res) => {
     request(options, (error, response, body) => {
         if (error) res.send(error);
         res.send(JSON.parse(body).articles);
+        res.locals.apiData = JSON.parse(body).articles;
+        next();
     });
-});
+}, articleController.addToQueries);
 
 // middleware from database checks if database contains query
-app.post('/api/articles', (req, res) => {
+app.post('/api/articles', (req, res, next) => {
     const options = {
         url: `https://newsapi.org/v2/everything?sources=${sources}&from=${yyyy}-${mm}-${dd - 2}&to=2017-${mm}-${dd}&q=${req.body.q}&apiKey=${process.env.NEWS_APIKEY}`,
         headers: { Accept: 'application/json' },
@@ -51,6 +58,7 @@ app.post('/api/articles', (req, res) => {
     request(options, (error, response, body) => {
         if (error) res.send(error);
         res.send(JSON.parse(body).articles);
+        next();
     });
 });
 
