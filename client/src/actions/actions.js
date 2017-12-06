@@ -31,7 +31,21 @@ export function onSubmit() {
 
 export const fetchPosts = () => ({
     type: types.FETCH_POSTS,
-})
+});
+
+export function onLoad() {
+    return function(dispatch, getState) {
+        const stateText = getState().steering.textValue;
+        const request = new Request(`http://localhost:3000/api/top`);
+        return fetch(request)
+            .then(response => response.json())
+            .then(json => dispatch(searchArticles(json)))
+            .catch(err => {
+                console.log(err);
+            })
+    }
+}
+
 
 
 // request.post('/api/articles', (err, res, body) => {

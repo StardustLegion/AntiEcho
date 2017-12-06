@@ -5,16 +5,24 @@ import SteeringContainer from './SteeringContainer';
 import * as actions from '../actions/actions';
 
 const mapStateToProps = state => ({
-  main: state.main
+  main: state.main,
+  onLoad: state.onLoad,
 })
 
 const mapDispatchToProps = actions;
 
 class MainContainer extends Component {
+
+  componentDidMount(){
+    this.props.onLoad();
+  }
+
   render() {
     return (
       <div>
-        <h1>MAIN CONTAINER</h1>
+        <div onClick={this.props.onLoad}>
+          <h1>The Spectrum Report</h1>
+        </div>
         <SteeringContainer />
         <NewsContainer main={this.props.main} />
       </div>
