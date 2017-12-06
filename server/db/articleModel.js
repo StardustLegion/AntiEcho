@@ -14,16 +14,15 @@ const articleSchema = new Schema({
     publishedAt: String,
 });
 
-// const sourceSchema = new Schema({
-//     source: {
-//         id: String,
-//         name: String,
-//     },
-//     articles: [articleSchema],
-// });
+const sourceSchema = new Schema({
+    source: {
+        id: String,
+        name: String,
+    },
+    articles: [articleSchema],
+});
 
-// const Articles = mongoose.model('Articles', sourceSchema);
-const Articles = mongoose.model('Articles', articleSchema);
+const Articles = mongoose.model('Articles', sourceSchema);
 
 
 module.exports = { Articles };

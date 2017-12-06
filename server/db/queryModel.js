@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-//const Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 
-const articleSchema = mongoose.Schema({
+const articleSchema = new Schema({
     source: {
         id: String,
         name: String,
@@ -15,19 +15,9 @@ const articleSchema = mongoose.Schema({
     publishedAt: String,
 });
 
-const querySchema = mongoose.Schema({
+const querySchema = new Schema({
     query: String,
     articles: [articleSchema],
 });
 
-// module.export = mongoose.model('Queries', querySchema);
 module.exports = mongoose.model('Article', querySchema);
-
-
-// const sourceSchema = new Schema({
-//     source: {
-//         id: String,
-//         name: String,
-//     },
-//     articles: [articleSchema],
-// });
