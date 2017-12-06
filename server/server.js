@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const request = require('request');
 const articleController = require('./db/articleController');
 
-mongoose.connect(`mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@ds044667.mlab.com:44667/news`);
+mongoose.connect(`mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@ds044887.mlab.com:44887/news`);
 mongoose.connection.once('open', () => {
     console.log('Connected with MongoDB MLab');
 });
@@ -48,9 +48,9 @@ app.get('/api/articles', articleController.getFromQueries, (req, res, next) => {
         res.locals.apiData = JSON.parse(body).articles;
         next();
     });
-}, articleController.addToQueries);
+}, articleController.addToQueries, articleController.timeoutRemoveQuery);
 
-app.get('/api/top', (req, res, next) => {
+app.get('/api/top', articleController.getFromHeadlines, (req, res, next) => {
     const options = {
         url: `https://newsapi.org/v2/top-headlines?sources=${sources}&apiKey=${process.env.NEWS_APIKEY}`,
         headers: { Accept: 'application/json' },
@@ -58,23 +58,11 @@ app.get('/api/top', (req, res, next) => {
     request(options, (error, response, body) => {
         if (error) res.send(error);
         res.send(JSON.parse(body).articles);
-        res.locals.apiData = JSON.parse(body).articles;
+        res.locals.headlineData = JSON.parse(body).articles;
         next();
     });
-});
+}, articleController.addToHeadlines, articleController.timeoutRemoveHeadlines);
 
-// middleware from database checks if database contains query
-app.post('/api/articles', (req, res, next) => {
-    const options = {
-        url: `https://newsapi.org/v2/everything?sources=${sources}&from=${yyyy}-${mm}-${dd - 2}&to=2017-${mm}-${dd}&q=${req.body.q}&apiKey=${process.env.NEWS_APIKEY}`,
-        headers: { Accept: 'application/json' },
-    };
-    request(options, (error, response, body) => {
-        if (error) res.send(error);
-        res.send(JSON.parse(body).articles);
-        next();
-    });
-});
 
 app.listen(port);
 console.log(`Server started on PORT:${port}`);

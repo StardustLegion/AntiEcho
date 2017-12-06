@@ -20,4 +20,4 @@ const querySchema = new Schema({
     articles: [articleSchema],
 });
 
-module.exports = mongoose.model('Article', querySchema);
+module.exports = mongoose.model('Queries', querySchema);

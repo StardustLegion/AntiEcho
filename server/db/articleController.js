@@ -1,24 +1,15 @@
-const { Articles } = require('./articleModel.js');
+const Articles = require('./articleModel.js');
 const Queries = require('./queryModel');
 
 const articleController = {};
 
 articleController.addToHeadlines = (req, res, next) => { // needs to be fixed
-    const result = {
-        source: {
-            id: req.body[0].source.id,
-            name: req.body[0].source.name,
-        },
-        articles: [req.body],
-    };
-
-    Queries.create(result);
+    const result = res.locals.headlineData;
+    Articles.create(result);
     next();
 };
 
 articleController.addToQueries = (req, res, next) => {
-    console.log('got here hello');
-
     const search = req.query.q;
 
     const result = {
@@ -27,21 +18,18 @@ articleController.addToQueries = (req, res, next) => {
     };
 
     Queries.create(result);
-
+    next();
 };
 
-articleController.getFromHeadlines = (req, res, next) => { // needs to be fixed
-    const search = req.params.q;
-
-    Articles.find({ query: search }, (err, result) => {
-        if (err) throw new Error(err);
+articleController.getFromHeadlines = (req, res, next) => {
+    Articles.find({}, (err, result) => {
+        if (err) console.log(err);
         if (result.length > 0) res.send(result);
         else next();
     });
 };
 
 articleController.getFromQueries = (req, res, next) => {
-
     const search = req.query.q;
 
     Queries.find({ query: search }, (err, result) => {
@@ -49,6 +37,22 @@ articleController.getFromQueries = (req, res, next) => {
         if (result.length === 0) next();
         else res.send(result);
     });
+};
+
+articleController.timeoutRemoveQuery = (req, res) => {
+    const search = req.query.q;
+
+    setTimeout(() => {
+        console.log("TIMEOUT");
+        Queries.remove({ query: search }); // NOT WORKING!!
+    }, 1500);
+};
+
+
+articleController.timeoutRemoveHeadlines = (req, res) => {
+    setTimeout(() => {
+        Articles.remove({});
+    }, 10000);
 };
 
 module.exports = articleController;
