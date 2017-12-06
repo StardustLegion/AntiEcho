@@ -13,7 +13,7 @@ const Search = props => {
       <br />
       <FlatButton
         id="search-button"
-        onClick={(e) => props.searchArticles()}
+        onClick={props.onSubmit}
         label="Search"
         primary={true} />
     </div>

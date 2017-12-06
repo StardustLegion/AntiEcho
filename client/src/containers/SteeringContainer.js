@@ -19,7 +19,7 @@ class SteeringContainer extends Component {
         <h3>STEERING CONTAINER</h3>
         <Header
           steering={this.props.steering}
-          searchArticles={this.props.searchArticles}
+          onSubmit={this.props.onSubmit}
           handleSearch={this.props.handleSearch}
         />
         <PoliticalSlider sliderValue={this.props.steering.sliderValue} sliderChange={this.props.sliderChange} />

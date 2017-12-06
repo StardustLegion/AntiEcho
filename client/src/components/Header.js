@@ -6,9 +6,9 @@ const Header = props => {
     <div>
       HEADER
       <Search
-        steering = {props.steering}
-        searchArticles = {props.searchArticles}
-        handleSearch = {props.handleSearch}
+        steering={props.steering}
+        onSubmit={props.onSubmit}
+        handleSearch={props.handleSearch}
       />
     </div>
   );
