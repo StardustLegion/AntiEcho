@@ -43,16 +43,15 @@ articleController.timeoutRemoveQuery = (req, res) => {
     const search = req.query.q;
 
     setTimeout(() => {
-        console.log("TIMEOUT");
-        Queries.remove({ query: search }); // NOT WORKING!!
-    }, 1500);
+        Queries.findOne({ query: search }).remove().exec();
+    }, 300000); // deleted from database after five minutes
 };
 
 
 articleController.timeoutRemoveHeadlines = (req, res) => {
     setTimeout(() => {
-        Articles.remove({}); // NOT WORKING!!
-    }, 10000);
+        Articles.find({}).remove().exec(); // NOT WORKING!!
+    }, 300000); // deleted from database after five minutes
 };
 
 module.exports = articleController;
