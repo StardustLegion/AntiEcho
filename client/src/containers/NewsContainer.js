@@ -26,7 +26,6 @@ class NewsContainer extends Component {
     });
     return (
       <div>
-        <h3>NEWS CONTAINER</h3>
         {newsFeedItemArr}
       </div>
     );

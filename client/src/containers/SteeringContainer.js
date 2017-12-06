@@ -16,7 +16,7 @@ class SteeringContainer extends Component {
   render() {
     return (
       <div>
-        <h3>STEERING CONTAINER</h3>
+        <h3>Adjust the slider to see news from across the aisle.</h3>
         <Header
           steering={this.props.steering}
           onSubmit={this.props.onSubmit}
