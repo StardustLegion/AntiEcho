@@ -2,21 +2,32 @@ const { Articles } = require('./articleModel.js');
 const { Queries } = require('./queryModel.js');
 
 
-function addToHeadlines(req, res, next) {
-    req.body.forEach(x => {
-        Articles.create(x); // needs to be changed
-    });
+function addToHeadlines(req, res, next) { // needs to be fixed
+    const result = {
+        source: {
+            id: req.body[0].source.id,
+            name: req.body[0].source.name,
+        },
+        articles: [req.body],
+    };
+
+    Queries.create(result);
     next();
 }
 
 function addToQueries(req, res, next) {
-    req.body.forEach(x => {
-        Queries.create(x); // needs to be changed
-    });
+    const search = req.params.id;
+
+    const result = {
+        query: search,
+        articles: req.body,
+    };
+
+    Queries.create(result);
     next();
 }
 
-function getFromHeadlines(req, res, next) {
+function getFromHeadlines(req, res, next) { // needs to be fixed
     const search = req.params.id;
 
     Articles.find({ query: search }, (err, result) => {

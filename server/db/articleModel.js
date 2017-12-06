@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.connect(`mongodb://${process.env.MONGO_USER}:<${process.env.MONGO_PASSWORD}>@ds044667.mlab.com:44667/news`);
 mongoose.connection.once('open', () => {
@@ -6,6 +6,10 @@ mongoose.connection.once('open', () => {
 });
 
 const articleSchema = new Schema({
+    source: {
+        id: String,
+        name: String,
+    },
     author: String,
     title: String,
     description: String,
@@ -22,6 +26,6 @@ const sourceSchema = new Schema({
     articles: [articleSchema],
 });
 
-const Articles = mongoose.model("Articles", sourceSchema)
+const Articles = mongoose.model('Articles', sourceSchema);
 
 module.export = { Articles };
