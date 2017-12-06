@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
-import Slider from '../components/Slider';
+import PoliticalSlider from '../components/PoliticalSlider';
 import * as actions from '../actions/actions';
 // import { bindActionCreators } from 'redux'; //refactor to use bindActionCreators
 
@@ -10,13 +10,7 @@ const mapStateToProps = state => ({
   steering: state.steering,
 });
 
-const mapDispatchToProps = dispatch => ({//refactor to use bindActionCreators
-  // return bindActionCreators({
-  //   searchArticles: actions.searchArticles,
-  // }, dispatch)
-  searchArticles: searchString => dispatch(actions.searchArticles(searchString)),
-  handleSearch: value => dispatch(actions.handleSearch(value))
-});
+const mapDispatchToProps = actions;
 
 class SteeringContainer extends Component {
   render() {
@@ -28,7 +22,7 @@ class SteeringContainer extends Component {
           searchArticles={this.props.searchArticles}
           handleSearch={this.props.handleSearch}
         />
-        <Slider />
+        <PoliticalSlider sliderValue={this.props.steering.sliderValue} sliderChange={this.props.sliderChange} />
       </div>
     );
   };
