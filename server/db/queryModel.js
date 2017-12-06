@@ -15,13 +15,13 @@ const articleSchema = mongoose.Schema({
     publishedAt: String,
 });
 
-// const querySchema = new Schema({
-//     query: String,
-//     articles: [articleSchema],
-// });
+const querySchema = mongoose.Schema({
+    query: String,
+    articles: [articleSchema],
+});
 
 // module.export = mongoose.model('Queries', querySchema);
-module.exports = mongoose.model('Article', articleSchema);
+module.exports = mongoose.model('Article', querySchema);
 
 
 // const sourceSchema = new Schema({

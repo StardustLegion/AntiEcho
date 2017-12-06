@@ -17,17 +17,17 @@ articleController.addToHeadlines = (req, res, next) => { // needs to be fixed
 };
 
 articleController.addToQueries = (req, res, next) => {
+    console.log('got here hello');
+
     const search = req.query.q;
 
-    console.log(req.body);
-    console.log(res.locals.apiData);
     const result = {
         query: search,
         articles: res.locals.apiData,
     };
 
     Queries.create(result);
-    next();
+
 };
 
 articleController.getFromHeadlines = (req, res, next) => { // needs to be fixed
