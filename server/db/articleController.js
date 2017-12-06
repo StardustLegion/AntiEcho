@@ -51,7 +51,7 @@ articleController.timeoutRemoveQuery = (req, res) => {
 
 articleController.timeoutRemoveHeadlines = (req, res) => {
     setTimeout(() => {
-        Articles.remove({});
+        Articles.remove({}); // NOT WORKING!!
     }, 10000);
 };
 
