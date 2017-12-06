@@ -8,6 +8,7 @@ const Header = props => {
         steering={props.steering}
         onSubmit={props.onSubmit}
         handleSearch={props.handleSearch}
+        handleKeyPress={props.handleKeyPress}
       />
     </div>
   );

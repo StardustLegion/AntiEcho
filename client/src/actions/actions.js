@@ -16,6 +16,16 @@ export const sliderChange = (value) => ({
     payload: value,
 });
 
+export function handleKeyPress(event) {
+  return function(dispatch, getState) {
+    if (event.charCode === 13) {
+      console.log('keypressed', event);
+      console.log('value in textfield is: ', getState().steering.textValue);
+      dispatch(onSubmit());
+    }
+  }
+}
+
 export function onSubmit() {
     return function(dispatch, getState) {
         const stateText = getState().steering.textValue;

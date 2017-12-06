@@ -21,6 +21,7 @@ class SteeringContainer extends Component {
           steering={this.props.steering}
           onSubmit={this.props.onSubmit}
           handleSearch={this.props.handleSearch}
+          handleKeyPress={this.props.handleKeyPress}
         />
         <PoliticalSlider sliderValue={this.props.steering.sliderValue} sliderChange={this.props.sliderChange} />
       </div>

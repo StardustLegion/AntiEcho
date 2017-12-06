@@ -4,21 +4,19 @@ import FlatButton from 'material-ui/FlatButton';
 
 const NewsFeedItem = props => {
   return (
-    <div>
+    <div id="card">
       <Card>
         <CardHeader
           title={props.title}
-          subtitle={props.author}
+          subtitle={props.source}
           actAsExpander={true}
           showExpandableButton={true}
         />
-        {/* <CardActions>
-          <FlatButton label="Action1" />
-          <FlatButton label="Action2" />
-        </CardActions> */}
         <CardText expandable={true}>
+          {props.author}
+          <br />
+          <a href={props.url}>{props.description}</a>
           <img src={props.urlToImage} />
-          {props.description}
         </CardText>
       </Card>
     </div>

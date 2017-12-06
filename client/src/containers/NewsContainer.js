@@ -13,7 +13,7 @@ class NewsContainer extends Component {
   render() {
     console.log('this.props.main.feedList is: ', this.props.main.feedList)
     const newsFeedItemArr = this.props.main.feedList.map((article, i) => {
-      console.log('NewsFeedItemzzz', article);
+      // console.log('NewsFeedItem', article);
       return <NewsFeedItem
         key={i}
         id={article._id}

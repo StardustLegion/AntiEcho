@@ -5,8 +5,7 @@ import SteeringContainer from './SteeringContainer';
 import * as actions from '../actions/actions';
 
 const mapStateToProps = state => ({
-  main: state.main,
-  onLoad: state.onLoad,
+  main: state.main
 })
 
 const mapDispatchToProps = actions;
