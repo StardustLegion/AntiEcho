@@ -32,24 +32,15 @@ export const handleSearch = (value) => ({
 // }
 
 export function onSubmit() {
- const data = { q: 'trump' };
-
-
-
- return function (dispatch, getState) {
-   // console.log('got here', getState().steering.textValue)
-   const stateText = getState().steering.textValue;
-    // dispatch(loading());
-  const request = new Request(`http://localhost:3000/api/articles/?q=${stateText}`);
-
-  return fetch(request).then(rating => {
-      return rating.json();
-    }).then(rating => {
-      dispatch(searchArticles(rating))
-    }).catch(err => {
-      // dispatch(loadRestaurantFailure());
-      console.log(err);
-    })
+  return function (dispatch, getState) {
+    const stateText = getState().steering.textValue;
+    const request = new Request(`http://localhost:3000/api/articles/?q=${stateText}`);
+    return fetch(request)
+      .then(response => response.json())
+      .then(json => dispatch(searchArticles(json)))
+      .catch(err => {
+        console.log(err);
+      })
   }
 }
 
