@@ -23,11 +23,12 @@ app.use(bodyParser.json());
 // set rankings based on http://www.businessinsider.com/most-and-least-trusted-news-outlets-in-america-2017-3
 const sourcesObj = {
     'breitbart-news': 9,
-    'the-huffington-post': -8,
-    'the-new-york-times': -5,
+    'fox-news': 6,
+    'abc-news': 3,
     'the-wall-street-journal': 0,
     'the-economist': -1,
-    'fox-news': 4,
+    'the-new-york-times': -5,
+    'the-huffington-post': -8,
 };
 const sources = Object.keys(sourcesObj).join(',');
 const today = new Date();
@@ -48,6 +49,19 @@ app.get('/api/articles', articleController.getFromQueries, (req, res, next) => {
         next();
     });
 }, articleController.addToQueries);
+
+app.get('/api/top', (req, res, next) => {
+    const options = {
+        url: `https://newsapi.org/v2/top-headlines?sources=${sources}&apiKey=${process.env.NEWS_APIKEY}`,
+        headers: { Accept: 'application/json' },
+    };
+    request(options, (error, response, body) => {
+        if (error) res.send(error);
+        res.send(JSON.parse(body).articles);
+        res.locals.apiData = JSON.parse(body).articles;
+        next();
+    });
+});
 
 // middleware from database checks if database contains query
 app.post('/api/articles', (req, res, next) => {
