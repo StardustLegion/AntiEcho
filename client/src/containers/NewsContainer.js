@@ -11,15 +11,23 @@ const mapDispatchToProps = actions;
 
 class NewsContainer extends Component {
   render() {
-    console.log('this.props.main.febbedList is: ', this.props.main.feedList)
-    const newsFeedItemArr = this.props.main.feedList.map((article) => {
-      console.log('NewsFeedItem', article);
+    console.log('this.props.main.feedList is: ', this.props.main.feedList)
+    const newsFeedItemArr = this.props.main.feedList.map((article, i) => {
+      console.log('NewsFeedItemzzz', article);
+      return <NewsFeedItem
+        key={i}
+        id={article._id}
+        author={article.author}
+        title={article.title}
+        description={article.description}
+        url={article.url}
+        urlToImage={article.urlToImage}
+      />
     });
     return (
       <div>
         <h3>NEWS CONTAINER</h3>
         {newsFeedItemArr}
-        {/* <NewsFeedItem main={this.props.main} /> */}
       </div>
     );
   };

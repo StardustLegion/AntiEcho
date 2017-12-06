@@ -12,7 +12,7 @@ const mainReducer = (state=initialState, action) => {
     case types.SEARCH_ARTICLES:
       console.log('response is: ', action.payload);
       if (action.payload.length === 0) feedList = [];
-      else feedList = action.payload[0].articles;
+      else feedList = action.payload;
 
       return {
         ...state,
