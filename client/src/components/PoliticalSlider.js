@@ -13,6 +13,9 @@ const PoliticalSlider = (props) => {
         value={props.sliderValue}
         onChange={(e, val) => props.sliderChange(val)}
       />
+      <div id="sliderText">
+        Adjusting the slider modifies the political leaning of the news below. 
+      </div>
     </div>
   );
 };

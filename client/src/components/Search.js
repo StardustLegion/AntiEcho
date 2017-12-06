@@ -9,7 +9,7 @@ const Search = props => {
         id="search-field"
         value={props.steering.textValue}
         onChange={e => props.handleSearch(e.target.value)}
-        hintText="Hint Text" />
+        hintText="Search here for news" />
       <br />
       <FlatButton
         id="search-button"
