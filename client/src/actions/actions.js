@@ -9,7 +9,12 @@ export const searchArticles = (response) => ({
 export const handleSearch = (value) => ({
   type: types.HANDLE_SEARCH,
   payload: value,
-})
+});
+
+export const sliderChange = (value) => ({
+  type: types.SLIDER_CHANGE,
+  payload: value,
+});
 
 // export const onSubmit = () => {//action informing reducers that request began
 //   console.log('onsubmit triggered')
