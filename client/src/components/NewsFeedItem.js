@@ -18,9 +18,7 @@ const NewsFeedItem = props => {
         marginRight: 'auto'
       }}
     />
-    <CardMedia
-      overlay={<CardTitle subtitle={props.source} />}
-    >
+    <CardMedia>
       <img src={props.urlToImage} alt="" />
     </CardMedia>
     <CardTitle
