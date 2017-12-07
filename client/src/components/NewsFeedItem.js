@@ -4,7 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 
 const NewsFeedItem = props => {
   return (
-    <div id="card">
+    <div id="card"><a href={props.url}>
       <Card style={{
         width: '100%'
       }}>
@@ -27,7 +27,7 @@ const NewsFeedItem = props => {
       // title={props.source} subtitle={props.author}
     />
     <CardText>
-      <a href={props.url}>{props.description}</a>
+      {props.description}
     </CardText>
   </Card>
       {/* <Card>
@@ -44,6 +44,7 @@ const NewsFeedItem = props => {
           <img src={props.urlToImage} />
         </CardText>
       </Card> */}
+    </a>
     </div>
   );
 };
