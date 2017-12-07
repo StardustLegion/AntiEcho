@@ -13,6 +13,7 @@ const articleSchema = new Schema({
     url: String,
     urlToImage: String,
     publishedAt: String,
+    createdAt: { type: Date, expires: 300000 }
 });
 
 const querySchema = new Schema({
