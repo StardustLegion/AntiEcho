@@ -20,7 +20,7 @@ class MainContainer extends Component {
     return (
       <div>
         <div onClick={this.props.onLoad}>
-          <h1>The Spectrum Report</h1>
+          <p id="header">The Spectrum Report</p>
         </div>
         <SteeringContainer sliderValue={this.props.main.sliderValue} />
         <NewsContainer main={this.props.main} />
