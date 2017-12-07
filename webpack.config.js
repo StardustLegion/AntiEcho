@@ -22,7 +22,7 @@ module.exports = {
       },
       {
         test: /\.jpe?g$|\.gif$|\.png$/i,
-        loader: 'file-loader?name=/assets/imgs/[name].[ext]',
+        loader: 'file-loader',
       },
     ],
     resolve: {
