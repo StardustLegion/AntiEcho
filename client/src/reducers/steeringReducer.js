@@ -1,8 +1,7 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
-  textValue: '',
-  sliderValue: 0,
+  textValue: ''
 };
 
 const steeringReducer = (state=initialState, action) => {
@@ -12,12 +11,6 @@ const steeringReducer = (state=initialState, action) => {
       return {
         ...state,
         textValue: action.payload
-      };
-
-    case types.SLIDER_CHANGE:
-      return {
-        ...state,
-        sliderValue: action.payload
       };
 
     case types.FETCH_POSTS:

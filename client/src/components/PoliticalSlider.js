@@ -7,11 +7,14 @@ const PoliticalSlider = (props) => {
     <div>
       <Slider
         defaultValue={0}
-        step={2.5}
+        step={1}
         min={-10}
         max={10}
         value={props.sliderValue}
-        onChange={(e, val) => props.sliderChange(val)}
+        onChange={(e, val) => {
+          props.sliderChange(val);
+          props.filterArticles();
+        }}
       />
     </div>
   );
