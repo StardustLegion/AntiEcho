@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from 'material-ui/Slider';
 
 const PoliticalSlider = (props) => {
-  console.log(props.sliderValue);
+  // console.log(props.sliderValue);
   return (
     <div id="slider">
       <Slider
