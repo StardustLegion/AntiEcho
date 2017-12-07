@@ -59,19 +59,3 @@ export function onLoad() {
       })
   }
 }
-
-
-
-// request.post('/api/articles', (err, res, body) => {
-//   if (err) return console.error('failed request: ', err)
-//   console.log('request success! ', body);
-//   dispatch(searchArticles(body));
-// }
-//   request.post('/api/articles', { q: textValue }).then(
-//     body => dispatch(searchArticles(body)),
-//     error => dispatch(() => console.log(error))
-//   )
-// }
-
-
-//have fetch call to node server, once you get sucessful response, dispatch searchArticles

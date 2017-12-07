@@ -18,7 +18,7 @@ class MainContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div id="mainContainer">
         <div onClick={this.props.onLoad} id="headerContainer">
           <p id="header">The Spectrum Report</p>
         </div>

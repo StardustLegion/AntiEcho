@@ -26,6 +26,34 @@ body{
 }
 
 a {
-  font-size: 20px;
+  font-size: 12px;
   text-decoration: none;
+}
+
+#mainContainer {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+#newsContainer {
+   display: -webkit-flex;
+   display: flex;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+   -webkit-flex-flow: row wrap;
+   flex-flow: row wrap;
+   /* tweak the where items line up on the row */
+   /* valid values are: flex-start, flex-end, space-between, space-around, stretch */
+   -webkit-align-content: flex-end;
+   align-content: flex-end;
+}
+
+#card {
+  width: 300px;
+  padding: 5px;
 }
