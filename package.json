@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./server/server.js",
+    "dev": "webpack-dev-server",
     "build": "./node_modules/.bin/webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,8 +28,7 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "request": "^2.83.0",
-    "webpack": "^1.13.1"
+    "request": "^2.83.0"
   },
   "devDependencies": {
     "babel-core": "^6.10.4",
@@ -49,6 +49,8 @@
     "nodemon": "^1.12.1",
     "redux-devtools": "^3.4.1",
     "sass-loader": "^3.2.2",
-    "style-loader": "^0.13.1"
+    "style-loader": "^0.13.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
   }
 }
