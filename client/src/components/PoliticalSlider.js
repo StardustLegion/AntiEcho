@@ -4,7 +4,7 @@ import Slider from 'material-ui/Slider';
 const PoliticalSlider = (props) => {
   console.log(props.sliderValue);
   return (
-    <div>
+    <div id="slider">
       <Slider
         defaultValue={0}
         step={1}
