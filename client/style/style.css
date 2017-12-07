@@ -15,3 +15,7 @@ body{
   font-size: .8em;
 }
 
+a {
+  font-size: 20px;
+  text-decoration: none;
+}

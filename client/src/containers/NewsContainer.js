@@ -18,6 +18,7 @@ class NewsContainer extends Component {
         key={i}
         id={article._id}
         author={article.author}
+        source={article.source.name}
         title={article.title}
         description={article.description}
         url={article.url}
