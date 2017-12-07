@@ -11,12 +11,10 @@ const NewsFeedItem = props => {
     <CardHeader
       title={props.title}
       subtitle={props.source}
-      avatar={props.urlToImage}
       titleStyle={{
         fontSize: '18px',
-        marginLeft: 'auto',
-        marginRight: 'auto'
       }}
+      textStyle={{paddingRight: '0px'}}
     />
     <CardMedia>
       <img src={props.urlToImage} alt="" />

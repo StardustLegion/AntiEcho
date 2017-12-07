@@ -17,8 +17,14 @@ body{
 
 #slider{
   width: 60%;
+  display: grid;
   margin-left: auto;
   margin-right: auto;
+}
+
+#red-blue-line{
+  margin-top: -56px;
+  width: 100%;
 }
 
 #search-field {
@@ -51,6 +57,7 @@ a {
    /* valid values are: flex-start, flex-end, space-between, space-around, stretch */
    -webkit-align-content: flex-end;
    align-content: flex-end;
+   margin-top:30px;
 }
 
 #card {
