@@ -19,7 +19,7 @@ const Search = props => {
         value={props.steering.textValue}
         onChange={e => props.handleSearch(e.target.value)}
         onKeyPress={(e) => props.handleKeyPress(e)}
-        hintText="Hint Text" />
+        hintText="Search here for news" />
       <br />
       <FlatButton
         id="search-button"

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
 const NewsFeedItem = props => {
@@ -25,12 +25,12 @@ const NewsFeedItem = props => {
 
 export default NewsFeedItem;
 
-{/* <NewsFeedItem
-  key={i}
-  id={article._id}
-  author={article.author}
-  title={article.title}
-  description={article.description}
-  url={article.url}
-  urlToImage={article.urlToImage}
-/> */}
+// {/* <NewsFeedItem
+//   key={i}
+//   id={article._id}
+//   author={article.author}
+//   title={article.title}
+//   description={article.description}
+//   url={article.url}
+//   urlToImage={article.urlToImage}
+// /> */}
