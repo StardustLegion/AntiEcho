@@ -24,3 +24,8 @@ body{
 #search-field {
   padding-bottom: 16px;
 }
+
+a {
+  font-size: 20px;
+  text-decoration: none;
+}
