@@ -22,6 +22,9 @@ const mainReducer = (state = initialState, action) => {
         .filter(key => sourcesObj[key] >= min && sourcesObj[key] <= max);
       feedList = state.allFeed.filter(article => sources.includes(article.source.id));
       // console.log('filtered sources', sources);
+      feedList = feedList.sort((a, b) => { // sort by date so that most recent stories are on top
+        return new Date(b.publishedAt) - new Date(a.publishedAt);
+      });
       return {
         ...state,
         isFetching: false,
