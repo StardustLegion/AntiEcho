@@ -1,3 +1,4 @@
-# AntiEcho
+# The Spectrum Report
 
-Diversity news platform
+Read Across the Aisle.
+
