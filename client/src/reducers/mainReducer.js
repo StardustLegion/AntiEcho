@@ -21,7 +21,7 @@ const mainReducer = (state = initialState, action) => {
       const sources = Object.keys(sourcesObj)
         .filter(key => sourcesObj[key] >= min && sourcesObj[key] <= max);
       feedList = state.allFeed.filter(article => sources.includes(article.source.id));
-      console.log('filtered sources', sources);
+      // console.log('filtered sources', sources);
       return {
         ...state,
         isFetching: false,
