@@ -26,7 +26,7 @@ class NewsContainer extends Component {
       />
     });
     return (
-      <div>
+      <div id="newsContainer">
         {newsFeedItemArr}
       </div>
     );

@@ -5,18 +5,27 @@ import FlatButton from 'material-ui/FlatButton';
 const NewsFeedItem = props => {
   return (
     <div id="card">
-      <Card>
+      <Card style={{
+        width: '100%'
+      }}>
     <CardHeader
       title={props.title}
       subtitle={props.source}
       avatar={props.urlToImage}
+      titleStyle={{
+        fontSize: '18px',
+        marginLeft: 'auto',
+        marginRight: 'auto'
+      }}
     />
     <CardMedia
-      overlay={<CardTitle title={props.title} subtitle={props.source} />}
+      overlay={<CardTitle subtitle={props.source} />}
     >
       <img src={props.urlToImage} alt="" />
     </CardMedia>
-    <CardTitle title={props.source} subtitle={props.author} />
+    <CardTitle
+      // title={props.source} subtitle={props.author}
+    />
     <CardText>
       <a href={props.url}>{props.description}</a>
     </CardText>
