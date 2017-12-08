@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import NewsContainer from './NewsContainer';
 import SteeringContainer from './SteeringContainer';
+import Nav from '../components/Nav';
 import * as actions from '../actions/actions';
 
 const mapStateToProps = state => ({
@@ -18,10 +19,8 @@ class MainContainer extends Component {
 
   render() {
     return (
-      <div id="mainContainer">
-        <div onClick={this.props.onLoad} id="headerContainer">
-          <p id="header">The Spectrum Report</p>
-        </div>
+      <div id="mainContainer" className='container'>
+        <Nav />
         <SteeringContainer sliderValue={this.props.main.sliderValue} id="steeringContainer"/>
         <NewsContainer main={this.props.main} id="newsContainer"/>
       </div>

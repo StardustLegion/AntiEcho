@@ -35,6 +35,7 @@ app.get('/api/articles', newsAPI.apiQuery, articleController.addToQueries);
 
 app.get('/api/top', newsAPI.apiHeadlines, articleController.addToHeadlines);
 
+
 app.get('/login', //facebook signup, // fb OAuth, //redirect to homepage 
 );
 

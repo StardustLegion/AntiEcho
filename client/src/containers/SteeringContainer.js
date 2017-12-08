@@ -15,7 +15,7 @@ const mapDispatchToProps = actions;
 class SteeringContainer extends Component {
   render() {
     return (
-      <div>
+      <div style={{width: '100%'}}>
         <h3>Read Across the Aisle.</h3>
         <Header
           steering={this.props.steering}
