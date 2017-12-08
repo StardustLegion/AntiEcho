@@ -30,9 +30,10 @@ app.get('/auth/callback', (req, res) => {
     res.end();
 });
 
-app.get('/api/articles', newsAPI.apiQuery, articleController.addToQueries, articleController.timeoutRemoveQuery);
+app.get('/api/articles', newsAPI.apiQuery, articleController.addToQueries);
 
-app.get('/api/top', newsAPI.apiHeadlines, articleController.addToHeadlines, articleController.timeoutRemoveHeadlines);
+
+app.get('/api/top', newsAPI.apiHeadlines, articleController.addToHeadlines);
 
 
 app.listen(port);
