@@ -6,9 +6,43 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./client/style/style.css">
     <link rel="icon" type="image/png" href="/red-blue-logo.png"/>
+    <script src="https://use.fontawesome.com/9d58abdf27.js"></script>
     <title>The Spectrum Report</title>
   </head>
   <body>
+    <div id="fb-root"></div>
+    <!-- <script>
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=382924998834444';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div> -->
+    <button id="github-button">
+      <div>
+        <i class="fa fa-github fa-2x" aria-hidden="true"></i>
+      </div>
+      <div>
+        <a href="https://github.com/login/oauth/authorize?scope=user:email&client_id=fed7371fef7e53360833">
+          Log In with GitHub
+        </a>
+      </div>
+    </button>
+    <!-- <script>
+
+      function loginWithGitHub() {
+      }
+
+      const URI = 'https://github.com/login/oauth/authorize?scope=user:email&client_id=fed7371fef7e53360833';
+      const oauthButton = document.getElementById('oauth').addEventListener('click', loginWithGitHub);
+
+    </script> -->
+
     <div id="app"></div>
   </body>
   <script src="./build/bundle.js"></script>
