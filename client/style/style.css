@@ -40,7 +40,29 @@ a {
   text-decoration: none;
 }
 
+.fa {
+  font-size: 30px;
+  color: white;
+  margin-right: 10px;
+}
+
+#github-button {
+  display: flex;
+  align-items: center;
+  background-color:#6e5494;
+  padding: 8px 15px;
+}
+
+#github-button a {
+  color: white;
+}
+
+#github-button a:visited {
+  color: white;
+}
+
 .container {
+
   display: -webkit-flex;
   display: flex;
   flex-direction: column;
