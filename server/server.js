@@ -6,6 +6,7 @@ const app = express();
 const mongoose = require('mongoose');
 const articleController = require('./db/articleController');
 const newsAPI = require('./db/newsAPI');
+const request = require('request');
 
 mongoose.connect(`mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@ds133166.mlab.com:33166/teamcheetah`, {
     useMongoClient: true
@@ -25,10 +26,6 @@ app.use(express.static(`${__dirname}/../`));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.get('/auth/callback', (req, res) => { 
-    console.log('GitHub is Calling!!');
-    res.end();
-});
 
 app.get('/api/articles', newsAPI.apiQuery, articleController.addToQueries);
 
@@ -42,21 +39,21 @@ app.get('/login', //facebook signup, // fb OAuth, //redirect to homepage
 app.get('/signup', //fb OAuth, //redirect to homepage
 );
 
-app.get('/auth/callback', (req,res) => {
+app.get('/auth/callback', (req, res) => {
+  request.post(`https://github.com/login/oauth/access_token?client_id=${process.env.OAUTH_ID}&client_secret=${process.env.OAUTH_SECRET}&code=${req.query.code}&accept=json`, 
+  (error, response, body) => {
+    const authToken = body.split('&')[0].split('=')[1];
+    const options = {
+      url: `https://api.github.com/user?access_token=${authToken}`,
+      headers: { 'User-Agent': 'didrio' }
+    };
+    request.get(options, (error, response, body) => res.send(body));
+  });
+})
 
+// app.post('/submitpreferences'), (req,res) => {
 
-});
-
-// app.get('/auth/callback', (req, res) => {
-//   request.post(`https://github.com/login/oauth/access_token?client_id=${keys.clientId}&client_secret=${keys.clientSecret}&code=${req.query.code}&accept=json`, (error, response, body) => {
-//     const authToken = body.split('&')[0].split('=')[1];
-//     const options = {
-//       url: `https://api.github.com/user?access_token=${authToken}`,
-//       headers: { 'User-Agent': 'didrio' }
-//     };
-//     request.get(options, (error, response, body) => res.send(body));
-//   });
-// });
+// }
 
 app.listen(port);
 console.log(`Server started on PORT:${port}`);
