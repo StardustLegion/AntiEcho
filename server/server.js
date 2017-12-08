@@ -47,7 +47,23 @@ app.get('/auth/callback', (req, res) => {
       url: `https://api.github.com/user?access_token=${authToken}`,
       headers: { 'User-Agent': 'didrio' }
     };
-    request.get(options, (error, response, body) => res.send(body));
+    request.get(options, (error, response, body) => {
+      const parsedResponse = JSON.parse(body);
+
+      const login = parsedResponse.login;
+
+      const dbObj = {
+        login: parsedResponse.login,
+        name: parsedResponse.name,
+        avatar: parsedResponse.avatar_url,
+        email: parsedResponse.email,
+        prefrences: {},
+        createdAt: Date.now(),
+      }
+      
+      console.log(dbObj);
+      res.redirect('/');
+    });
   });
 })
 
