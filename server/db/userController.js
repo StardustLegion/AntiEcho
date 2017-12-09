@@ -7,7 +7,6 @@ userController.checkUser = (req,res,next) => {
       if(err){
         res.send({error: "error with saving user"});
       }else if(!user){
-<<<<<<< HEAD
         let user = new UserProfileData(res.locals.authdata);
         user.preferences = {};
         for(var key in Sources){
@@ -21,17 +20,6 @@ userController.checkUser = (req,res,next) => {
           next();
         }
       })
-=======
-
-        let user = new UserProfileData(res.locals.authdata);
-        user.save(function(err){
-          if(err){
-            res.send({error: "error with saving user"});
-          }else{
-            next();
-          }
-        })
->>>>>>> 1fb03747ceaebb12fb1888ce803b140ecf54157a
       }else{
         let profileNewsSources = Object.keys(user.preferences);
         res.locals.user = user;
@@ -42,25 +30,26 @@ userController.checkUser = (req,res,next) => {
         }
         next();
       }
-  })
+  });
 }
-
-/// arbitrary changessssss
 
 
 userController.updatePreferences = (req,res,next) => {
-   let allNewsSources = Object.keys(Sources);
     res.locals.user = user;
+    let profileNewsSources = Object.keys(req.body);
     UserProfileData.findOne({login: res.locals.authdata.login}, (err, user)=>{
       if(err){
         res.send({error: "error with finding user profile"});
       }else{
-        
-
+        for(let i=0; i<profileNewsSources.length; i++){
+          if(profileNewsSources[i] !== false){
+            user.preferences[i]===true;
+          }
+        }
+      res.locals.authdata.preferences = user.preferences; 
+      next();
       }
-
-
-
+   });
 }
 
 module.exports = userController;
