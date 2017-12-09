@@ -39,29 +39,36 @@ app.get('/login', //facebook signup, // fb OAuth, //redirect to homepage
 app.get('/signup', //fb OAuth, //redirect to homepage
 );
 
+const parsedResponse;
+
 app.get('/auth/callback', (req, res) => {
+    //request authorization from Github OAuth
   request.post(`https://github.com/login/oauth/access_token?client_id=${process.env.OAUTH_ID}&client_secret=${process.env.OAUTH_SECRET}&code=${req.query.code}&accept=json`, 
   (error, response, body) => {
+    //convert authorization token for use
     const authToken = body.split('&')[0].split('=')[1];
+    //create container for new request with the authorization token attached
     const options = {
       url: `https://api.github.com/user?access_token=${authToken}`,
       headers: { 'User-Agent': 'didrio' }
     };
+    //make request to GitHub OAuth 
     request.get(options, (error, response, body) => {
-      const parsedResponse = JSON.parse(body);
+    parsedResponse = JSON.parse(body);
+    
+    cookieController.setSSIDCookie();
+    //   const login = parsedResponse.login;
 
-      const login = parsedResponse.login;
-
-      const dbObj = {
-        login: parsedResponse.login,
-        name: parsedResponse.name,
-        avatar: parsedResponse.avatar_url,
-        email: parsedResponse.email,
-        prefrences: {},
-        createdAt: Date.now(),
-      }
+    //   const dbObj = {
+    //     login: parsedResponse.login,
+    //     name: parsedResponse.name,
+    //     avatar: parsedResponse.avatar_url,
+    //     email: parsedResponse.email,
+    //     prefrences: {},
+    //     createdAt: Date.now(),
+    //   }
       
-      console.log(dbObj);
+    //   console.log(dbObj);
       res.redirect('/');
     });
   });
