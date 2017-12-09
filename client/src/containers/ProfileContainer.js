@@ -32,7 +32,7 @@ class ProfileContainer extends Component {
       },
       body: JSON.stringify(this.state.sources),
     }).then((res) => {
-      console.log(res);
+      window.location = '/';
     });
   }
 

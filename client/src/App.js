@@ -5,6 +5,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import style from '../style/style.css';
 import Nav from './components/Nav';
 import Header from './components/Header';
+import Stocks from './components/Stocks';
 import * as actions from './actions/actions';
 import { connect } from 'react-redux';
 
@@ -43,6 +44,7 @@ class App extends Component {
             <Nav getUserData={this.props.getUserData}/>
             <Route exact path='/' component={MainContainer} />
             <Route exact path='/edit' component={ProfileContainer} />
+            <Stocks />
           </div>
         </BrowserRouter>
       </div>

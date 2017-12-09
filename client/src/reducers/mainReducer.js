@@ -25,7 +25,6 @@ const mainReducer = (state = initialState, action) => {
       const sources = Object.keys(sourcesObj)
         .filter(key => sourcesObj[key] >= min && sourcesObj[key] <= max);
       feedList = state.allFeed.filter(article => sources.includes(article.source.id));
-      // console.log('filtered sources', sources);
       feedList = feedList.sort((a, b) => { // sort by date so that most recent stories are on top
         return new Date(b.publishedAt) - new Date(a.publishedAt);
       });
@@ -35,7 +34,6 @@ const mainReducer = (state = initialState, action) => {
         feedList: feedList
       }
     case types.SEARCH_ARTICLES:
-      // console.log('response is: ', action.payload);
       if (action.payload.length === 0) feedList = [];
       else {
         const range = 2;
