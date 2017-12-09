@@ -5,7 +5,7 @@ const userController = {};
 userController.checkUser = (req,res,next) => {
   UserProfileData.findOne({login: res.locals.authdata.login}, (err, user)=>{
       if(err){
-        console.log("error");
+        res.send({error: "error with saving user"});
       }else if(!user){
 
       let user = new UserProfileData(res.locals.authdata);
