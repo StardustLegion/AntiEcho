@@ -1,22 +1,38 @@
 
 body{
-  font-family: Arial;
+  font-family: 'Times New Roman', Times, serif;
+  color: rgb(54, 54, 54);
 }
 
 a, a:link, a:hover, a:visited, a:active {
-  color: black;
+  color: rgb(54, 54, 54);
 }
 
-#header{
-  font-size: 3em;
-  font-weight: bold;
-  margin-top: 40px;
+#search-field{
+  font-size: 4em;
+  margin-top: 6px;
+  font-family: 'Cormorant SC', serif;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  width: 60%;
+  border-bottom: 1px solid lightgrey;
+  margin-left: calc(50vw - (60% / 2));
+}
+
+#header-text {
+  font-size: 4em;
+  font-family: 'Cormorant SC', serif;
 }
 
 #sliderText {
-  margin-top: -35px;
-  margin-bottom: 30px;
-  font-size: .8em;
+  margin-top: -10px;
+  margin-bottom: 5px;
+  font-size: 1em;
 }
 
 #slider{
@@ -29,6 +45,7 @@ a, a:link, a:hover, a:visited, a:active {
 #red-blue-line{
   margin-top: -56px;
   width: 100%;
+  border-radius: 10px;
 }
 
 #search-field {
@@ -41,28 +58,17 @@ a {
 }
 
 .fa {
-  font-size: 30px;
-  color: white;
+  font-size: 20px;
+  color: black;
   margin-right: 10px;
 }
 
-#github-button {
+#github {
   display: flex;
   align-items: center;
-  background-color:#6e5494;
-  padding: 8px 15px;
-}
-
-#github-button a {
-  color: white;
-}
-
-#github-button a:visited {
-  color: white;
 }
 
 .container {
-
   display: -webkit-flex;
   display: flex;
   flex-direction: column;
@@ -79,16 +85,9 @@ a {
    justify-content: center;
    -webkit-flex-flow: row wrap;
    flex-flow: row wrap;
-   /* tweak the where items line up on the row */
-   /* valid values are: flex-start, flex-end, space-between, space-around, stretch */
    -webkit-align-content: flex-end;
    align-content: flex-end;
    margin-top:30px;
-}
-
-#card {
-  width: 300px;
-  padding: 5px;
 }
 
 #headerContainer {
@@ -101,10 +100,13 @@ a {
 #profile-header {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   width: 50%;
+  height: 0px;
   margin-bottom: 25px;
-  background-color: rgb(233, 233, 233);
-  border-radius: 5px;
+  background-color: rgb(248, 248, 248);
+  border-bottom: 1px solid lightgrey;
+  border-top: 1px solid lightgrey;
   padding: 15px 25px;
 }
 
@@ -124,12 +126,13 @@ a {
   padding-right: 20px;
   width: 300px;
   height: 100px;
-  font-size: 0.9em;
+  font-size: 1.2em;
   font-weight: 800;
-  background-color: rgb(233, 233, 233);
   border-radius: 5px;
   margin: 20px;
   cursor: pointer;
+  border: 1px solid lightgrey;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
 }
 
 .selected {
@@ -139,7 +142,7 @@ a {
 }
 
 #news-pref-item:hover {
-  background-color: rgb(209, 209, 209);
+  background-color: rgb(224, 224, 224);
 }
 
 #news-pref-item img {
@@ -156,4 +159,56 @@ a {
   flex-wrap: wrap;
   width: 60%;
   justify-content: space-between;
+}
+
+.grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.grid-item { 
+  width: 400px;
+  height: 400px;
+  margin: 20px;
+  border: 1px solid lightgrey;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  text-overflow: ellipsis;
+  white-space: wrap;
+  overflow: hidden;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid-item:hover {
+  background-color: lightgrey;
+  transition: all 0.3s;
+}
+
+.grid-item h4 {
+  margin: 15px 15px 0 15px;
+  padding: 0;
+  font-size: 1.4em;
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+.grid-item p {
+  margin: 0 15px 10px 15px;
+  padding: 0;
+  font-size: 1.3em;
+  text-align: left;
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-item img {
+  width: 400px;
 }
