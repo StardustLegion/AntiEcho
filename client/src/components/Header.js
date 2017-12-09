@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Search from './Search';
+import Time from './Time';
+import moment from 'moment';
 
-const Header = props => {
-  return (
-    <div>
-      <Search
-        steering={props.steering}
-        onSubmit={props.onSubmit}
-        handleSearch={props.handleSearch}
-        handleKeyPress={props.handleKeyPress}
-      />
-    </div>
-  );
-};
+class Header extends Component {
+
+  render() {
+    return (
+      <div id='header'>
+        <Search
+          steering={this.props.steering}
+          onSubmit={this.props.onSubmit}
+          handleSearch={this.props.handleSearch}
+          handleKeyPress={this.props.handleKeyPress}
+        />
+        <Time />
+      </div>
+    );
+  }
+}
 
 export default Header;
