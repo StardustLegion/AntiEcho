@@ -1,4 +1,4 @@
-
+const Sources = require('./../sources.js')
 const UserProfileData = require('./userModel');
 const userController = {};
 
@@ -8,19 +8,24 @@ userController.checkUser = (req,res,next) => {
         res.send({error: "error with saving user"});
       }else if(!user){
 
-      let user = new UserProfileData(res.locals.authdata);
+        let user = new UserProfileData(res.locals.authdata);
 
-      user.save(function(err){
-        if(err){
-          res.send({error: "error with saving user"});
+        for(user.preferences
+          
+          
+        user.preferences
+
+        user.save(function(err){
+          if(err){
+            res.send({error: "error with saving user"});
+          }else{
+            next();
+          }
+        })
         }else{
+          res.locals.user = user;
           next();
         }
-      })
-      }else{
-        res.locals.user = user;
-        next();
-      }
   })
 }
 
