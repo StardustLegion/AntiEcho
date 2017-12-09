@@ -48,7 +48,7 @@ const PoliticalSlider = (props) => {
       />
       <img id='red-blue-line' src={logo}/>
       <div id="sliderText">
-        Adjusting the slider modifies the political leaning of the news below. 
+        Adjust the slider to modify the political leaning of the news below. 
       </div>
     </div>
   );
