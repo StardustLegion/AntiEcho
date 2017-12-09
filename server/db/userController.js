@@ -12,7 +12,7 @@ userController.checkUser = (req,res,next) => {
 
       user.save(function(err){
         if(err){
-          console.log("error with saving user");
+          res.send({error: "error with saving user"});
         }else{
           next();
         }

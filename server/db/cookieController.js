@@ -16,7 +16,7 @@ cookieController.startSession = (req,res,next) => {
 
   startupsess.save(function(error){
     if(error){
-      console.log('error with saving session cookie');
+      res.send({error: "error with saving user"});
     }else{
       next();
     }
