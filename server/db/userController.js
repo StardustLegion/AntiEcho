@@ -1,4 +1,4 @@
-const Sources = require('./../../sources.js')// con
+const Sources = require('./../../sources.js');
 const UserProfileData = require('./userModel');
 const userController = {};
 
