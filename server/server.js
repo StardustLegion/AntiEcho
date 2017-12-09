@@ -60,7 +60,7 @@ app.get('/auth/callback', (req, res) => {
         prefrences: {},
         createdAt: Date.now(),
       }
-      
+
       console.log(dbObj);
       res.redirect('/');
     });
