@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
 class Github extends Component {
+
+  componentDidMount() {
+    this.props.getUserData();
+  }
+
   render() {
     return (
       <div id="github">

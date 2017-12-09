@@ -16,6 +16,19 @@ const mapDispatchToProps = actions;
 
 class App extends Component {
 
+  componentDidMount() {
+    window.navigator.geolocation.getCurrentPosition((pos) => {
+      fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&APPID=6b20039417871aa1961f0e2af6726f78`).
+        then(response => response.json()).then(data => {
+          const city = data.name;
+          const current = (data.main.temp * 1.8 - 459.67).toFixed();
+          const high = (data.main.temp_max * 1.8 - 459.67).toFixed();
+          const low = (data.main.temp_min * 1.8 - 459.67).toFixed();
+          this.props.sendWeather({ city, current, high, low });
+        });
+    });
+  }
+
   render() {
     return (
       <div style={{textAlign: 'center'}}>
@@ -27,7 +40,7 @@ class App extends Component {
               handleSearch={this.props.handleSearch}
               handleKeyPress={this.props.handleKeyPress}
             />
-            <Nav />
+            <Nav getUserData={this.props.getUserData}/>
             <Route exact path='/' component={MainContainer} />
             <Route exact path='/edit' component={ProfileContainer} />
           </div>
