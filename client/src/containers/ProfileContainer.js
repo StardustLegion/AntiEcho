@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Nav from '../components/Nav';
 import NewsPrefItem from '../components/NewsPrefItem';
 
 class ProfileContainer extends Component {
@@ -49,7 +48,7 @@ class ProfileContainer extends Component {
     ];
 
     return sources.map((source, index) => {
-      return <NewsPrefItem name={source.name} image={source.image} index={index} />
+      return <NewsPrefItem key={index} name={source.name} image={source.image} index={index} />
     });
   }
 
@@ -57,7 +56,6 @@ class ProfileContainer extends Component {
 
     return (
       <div className='container'>
-        <Nav />
         <h3>Choose your favorite news sources.</h3>
         <div id='profile-container'>
           {this.renderItems()}
