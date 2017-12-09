@@ -1,5 +1,4 @@
-
-body{
+body {
   font-family: 'Times New Roman', Times, serif;
   color: rgb(54, 54, 54);
 }
@@ -8,7 +7,7 @@ a, a:link, a:hover, a:visited, a:active {
   color: rgb(54, 54, 54);
 }
 
-#search-field{
+#search-field {
   font-size: 4em;
   margin-top: 6px;
   font-family: 'Cormorant SC', serif;
@@ -35,14 +34,14 @@ a, a:link, a:hover, a:visited, a:active {
   font-size: 1em;
 }
 
-#slider{
+#slider {
   width: 60%;
   display: grid;
   margin-left: auto;
   margin-right: auto;
 }
 
-#red-blue-line{
+#red-blue-line {
   margin-top: -56px;
   width: 100%;
   border-radius: 10px;
@@ -173,14 +172,14 @@ a {
   margin: 20px;
   border: 1px solid lightgrey;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  text-overflow: ellipsis;
-  white-space: wrap;
-  overflow: hidden;
   border-radius: 5px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-overflow: ellipsis;
+  white-space: wrap;
+  overflow: hidden;
 }
 
 .grid-item:hover {
@@ -189,7 +188,7 @@ a {
 }
 
 .grid-item h4 {
-  margin: 15px 15px 0 15px;
+  margin: 15px;
   padding: 0;
   font-size: 1.4em;
   font-weight: 800;
@@ -211,4 +210,15 @@ a {
 
 .grid-item img {
   width: 400px;
+}
+
+.grid-item h4 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: left;
+}
+
+#weather {
+  margin-right: 55px;
 }
