@@ -15,9 +15,11 @@ OAuthController.authProcess = (req,res,next) => {
         //make request to GitHub OAuth 
         request.get(options, (error, response, body) => {
         const OAuthData = JSON.parse(body);
+        console.log(OAuthData);
+
         res.locals.authdata = {
          login: OAuthData.login,
-         avatar: OAuthData.avatar,
+         avatar: OAuthData.avatar_url,
          email: OAuthData.email
         };
         next();

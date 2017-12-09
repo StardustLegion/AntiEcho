@@ -12,12 +12,20 @@ class NewsFeedItem extends Component {
     }
   }
 
+  renderTitle() {
+    let elipses = '';
+    if (this.props.title.split('').length > 45) elipses = '...';
+    const title = this.props.title.split('').filter((c, i) => i < 45).join('');
+    return <h4>{title + elipses}</h4>;
+  }
+
   render() {
     return (
       <a target="_blank" href={this.props.url} className="grid-item">
         {this.renderImage()}
-        <h4>{this.props.title}</h4>
+        {this.renderTitle()}
         <p>{this.props.description}</p>
+        <p>{this.props.source}</p>
       </a>
     );
   }

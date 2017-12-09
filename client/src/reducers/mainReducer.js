@@ -1,6 +1,6 @@
 import * as jsCookie from 'js-cookie';
 import * as types from '../constants/actionTypes';
-const sourcesObj = require('./../../../server/db/sources');
+const sourcesObj = require('../../../sources');
 
 let feedList = [];
 let allFeed = [];

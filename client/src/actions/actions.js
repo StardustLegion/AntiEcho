@@ -20,8 +20,14 @@ export const filterArticles = () => ({
   type: types.FILTER_ARTICLES,
 });
 
+
 export const getUserData = () => ({
   type: types.SET_USER,
+});
+                                  
+export const sendWeather = (data) => ({
+  type: types.SEND_WEATHER,
+  payload: data
 });
 
 export function handleKeyPress(event) {
