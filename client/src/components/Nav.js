@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Github from './Github';
+import { connect } from 'react-redux';
+
+const mapStateToProps = (state) => ({
+  login: state.main.userLogin,
+  avatar: state.main.userAvatar
+});
 
 class Nav extends Component {
   render() {
@@ -12,7 +18,7 @@ class Nav extends Component {
         <div id='profile-header'>
           <span className='header-item'><Link to='/edit'>Edit Preferences</Link></span>
           <span className='header-item' style={{color: 'lightgrey'}}>|</span>
-          <span className='header-item'><Github getUserData={this.props.getUserData} /></span>
+          <span className='header-item'><Github login={this.props.login} avatar={this.props.avatar} getUserData={this.props.getUserData} /></span>
           <span className='header-item' style={{ color: 'lightgrey' }}>|</span>
           <span className='header-item'><a href='/logout'>Log Out</a></span>
         </div>
@@ -21,4 +27,4 @@ class Nav extends Component {
   }
 };
 
-export default Nav;
+export default connect(mapStateToProps)(Nav);
