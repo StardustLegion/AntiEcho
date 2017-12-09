@@ -1,14 +1,26 @@
-const sessionController = require('./sessionController');
-
+const Session = require('./sessionModel');
 const cookieController = {};
-cookieController.setSSIDCookie = setSSIDCookie;
 
-function setSSIDCookie(req, res, next) {
-  // let person = req.currentUserID;
-  // console.log(person)
-
-  res.cookie('ssid', String(req.login), {httpOnly: true});
+cookieController.setCookie = (req,res,next) => {
+  res.cookie('name',res.locals.authdata.login);
+  res.cookie('avatar',res.locals.authdata.avatar); 
   next();  
 }
+
+cookieController.startSession = (req,res,next) => {
+  let loginstore = {
+      login: res.locals.authdata.login
+  }
+
+  let startupsess = new Session(loginstore);
+
+  startupsess.save(function(error){
+    if(error){
+      console.log('error with saving session cookie');
+    }else{
+      next();
+    }
+  })
+};
 
 module.exports = cookieController;
