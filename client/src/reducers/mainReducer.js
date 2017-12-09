@@ -1,3 +1,4 @@
+import * as jsCookie from 'js-cookie';
 import * as types from '../constants/actionTypes';
 const sourcesObj = require('../../../sources');
 
@@ -9,6 +10,9 @@ const initialState = {
   allFeed: allFeed,
   feedList: feedList,
   sliderValue: 0,
+  userLogin: '',
+  userAvatar: '',
+  userPrefrences: {},
 };
 
 // an array of obj obj = {}.source.id
@@ -63,6 +67,15 @@ const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: true
+      };
+
+    case types.SET_USER:
+      console.log(jsCookie);
+      return {
+        ...state,
+        userLogin: jsCookie.get('login'),
+        userAvatar: jsCookie.get('avatar'),
+        userPrefrences: jsCookie.get('prefrences')
       };
 
     default:

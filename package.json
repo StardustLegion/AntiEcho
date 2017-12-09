@@ -19,6 +19,7 @@
     "es6-promise": "^4.1.1",
     "express": "^4.13.4",
     "isomorphic-fetch": "^2.2.1",
+    "js-cookie": "^2.2.0",
     "material-ui": "^0.20.0",
     "material-ui-slider-label": "git+https://github.com/tariqwest/material-ui-slider-label.git",
     "moment": "^2.19.3",
