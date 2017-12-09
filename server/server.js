@@ -7,6 +7,9 @@ const mongoose = require('mongoose');
 const articleController = require('./db/articleController');
 const newsAPI = require('./db/newsAPI');
 const request = require('request');
+const OAuthController = require('./db/OAuthController');
+const cookieController = require('./db/cookieController');
+const userController = require('./db/userController');
 
 mongoose.connect(`mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@ds133166.mlab.com:33166/teamcheetah`, {
     useMongoClient: true
@@ -39,25 +42,21 @@ app.get('/login', //facebook signup, // fb OAuth, //redirect to homepage
 app.get('/signup', //fb OAuth, //redirect to homepage
 );
 
-const parsedResponse;
+app.get('/auth/callback', OAuthController.authProcess, userController.checkUser, 
+cookieController.setCookie, cookieController.startSession, 
+  (req,res) => {
+      res.redirect('/');
+    }
+);
 
-app.get('/auth/callback', (req, res) => {
-    //request authorization from Github OAuth
-  request.post(`https://github.com/login/oauth/access_token?client_id=${process.env.OAUTH_ID}&client_secret=${process.env.OAUTH_SECRET}&code=${req.query.code}&accept=json`, 
-  (error, response, body) => {
-    //convert authorization token for use
-    const authToken = body.split('&')[0].split('=')[1];
-    //create container for new request with the authorization token attached
-    const options = {
-      url: `https://api.github.com/user?access_token=${authToken}`,
-      headers: { 'User-Agent': 'didrio' }
-    };
-    //make request to GitHub OAuth 
-    request.get(options, (error, response, body) => {
-    parsedResponse = JSON.parse(body);
-    
-    cookieController.setSSIDCookie();
-    //   const login = parsedResponse.login;
+// app.post('/submitpreferences'), (req,res) => {
+
+// }
+
+app.listen(port);
+console.log(`Server started on PORT:${port}`);
+
+ //   const login = parsedResponse.login;
 
     //   const dbObj = {
     //     login: parsedResponse.login,
@@ -69,14 +68,3 @@ app.get('/auth/callback', (req, res) => {
     //   }
       
     //   console.log(dbObj);
-      res.redirect('/');
-    });
-  });
-})
-
-// app.post('/submitpreferences'), (req,res) => {
-
-// }
-
-app.listen(port);
-console.log(`Server started on PORT:${port}`);
