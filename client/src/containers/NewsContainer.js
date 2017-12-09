@@ -27,7 +27,7 @@ class NewsContainer extends Component {
       />
     });
     return (
-      <div id="newsContainer">
+      <div className="grid">
         {newsFeedItemArr}
       </div>
     );

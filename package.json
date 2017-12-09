@@ -6,10 +6,10 @@
   "scripts": {
     "start": "nodemon ./server/server.js",
     "dev": "webpack-dev-server",
-    "build": "./node_modules/.bin/webpack -w",
+    "build": "./node_modules/.bin/webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Henry Au",
+  "author": "Team Cheetah",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.17.1",
@@ -21,6 +21,8 @@
     "isomorphic-fetch": "^2.2.1",
     "js-cookie": "^2.2.0",
     "material-ui": "^0.20.0",
+    "material-ui-slider-label": "git+https://github.com/tariqwest/material-ui-slider-label.git",
+    "moment": "^2.19.3",
     "mongoose": "^4.13.5",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
