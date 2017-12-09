@@ -1,5 +1,4 @@
 import React from 'react';
-// import Slider from 'material-ui/Slider';
 import Slider from 'material-ui-slider-label/Slider';
 import logo from './redblue.png'; 
 

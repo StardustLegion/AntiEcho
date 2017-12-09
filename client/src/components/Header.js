@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Search from './Search';
 import Time from './Time';
+import Weather from './Weather';
 import moment from 'moment';
 
 class Header extends Component {
@@ -14,6 +15,7 @@ class Header extends Component {
           handleSearch={this.props.handleSearch}
           handleKeyPress={this.props.handleKeyPress}
         />
+        <Weather />
         <Time />
       </div>
     );
