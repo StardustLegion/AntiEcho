@@ -20,6 +20,10 @@ export const filterArticles = () => ({
   type: types.FILTER_ARTICLES,
 });
 
+export const getUserData = () => ({
+  type: types.SET_USER,
+});
+
 export function handleKeyPress(event) {
   return function (dispatch, getState) {
     if (event.charCode === 13) {

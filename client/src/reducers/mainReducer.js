@@ -10,10 +10,9 @@ const initialState = {
   allFeed: allFeed,
   feedList: feedList,
   sliderValue: 0,
-  userName: '',
   userLogin: '',
-  userPrefrences: {},
   userAvatar: '',
+  userPrefrences: {},
 };
 
 // an array of obj obj = {}.source.id
@@ -70,14 +69,14 @@ const mainReducer = (state = initialState, action) => {
         isFetching: true
       };
 
-    case type.SET_USER:
+    case types.SET_USER:
+      console.log(jsCookie);
       return {
         ...state,
-        userName: jsCookie.get('name'),
         userLogin: jsCookie.get('login'),
-        userPrefrences: jsCookie.get('prefrences'),
         userAvatar: jsCookie.get('avatar'),
-      }
+        userPrefrences: jsCookie.get('prefrences')
+      };
 
     default:
       return state;

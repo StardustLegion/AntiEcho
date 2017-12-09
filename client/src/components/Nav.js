@@ -12,7 +12,7 @@ class Nav extends Component {
         <div id='profile-header'>
           <span className='header-item'><Link to='/edit'>Edit Preferences</Link></span>
           <span className='header-item' style={{color: 'lightgrey'}}>|</span>
-          <span className='header-item'><Github /></span>
+          <span className='header-item'><Github getUserData={this.props.getUserData} /></span>
           <span className='header-item' style={{ color: 'lightgrey' }}>|</span>
           <span className='header-item'><a href='/logout'>Log Out</a></span>
         </div>

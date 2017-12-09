@@ -27,7 +27,7 @@ class App extends Component {
               handleSearch={this.props.handleSearch}
               handleKeyPress={this.props.handleKeyPress}
             />
-            <Nav />
+            <Nav getUserData={this.props.getUserData}/>
             <Route exact path='/' component={MainContainer} />
             <Route exact path='/edit' component={ProfileContainer} />
           </div>
