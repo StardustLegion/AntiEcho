@@ -7,6 +7,7 @@ userController.checkUser = (req,res,next) => {
       if(err){
         res.send({error: "error with saving user"});
       }else if(!user){
+<<<<<<< HEAD
         let user = new UserProfileData(res.locals.authdata);
         user.preferences = {};
         for(var key in Sources){
@@ -20,6 +21,17 @@ userController.checkUser = (req,res,next) => {
           next();
         }
       })
+=======
+
+        let user = new UserProfileData(res.locals.authdata);
+        user.save(function(err){
+          if(err){
+            res.send({error: "error with saving user"});
+          }else{
+            next();
+          }
+        })
+>>>>>>> 1fb03747ceaebb12fb1888ce803b140ecf54157a
       }else{
         let profileNewsSources = Object.keys(user.preferences);
         res.locals.user = user;
