@@ -33,6 +33,9 @@ userController.checkUser = (req,res,next) => {
   })
 }
 
+/// arbitrary changessssss
+
+
 userController.updatePreferences = (req,res,next) => {
    let allNewsSources = Object.keys(Sources);
     res.locals.user = user;
