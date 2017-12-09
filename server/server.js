@@ -49,6 +49,13 @@ cookieController.setCookie, cookieController.startSession,
     }
 );
 
+app.post('/api/preferences', userController.updatePreferences, 
+cookieController.setCookie,
+  (req,res) => {
+    res.redirect('/')
+    }
+);
+
 // app.post('/submitpreferences'), (req,res) => {
 
 // }
