@@ -5,12 +5,12 @@ class Time extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: moment().format('MMMM Do YYYY, h:mm:ss a')
+      time: moment().format('llll')
     };
   }
 
   componentDidMount() {
-    setInterval(() => this.setState({ time: moment().format('MMMM Do YYYY, h:mm:ss a') }), 1000);
+    setInterval(() => this.setState({ time: moment().format('llll') }), 1000);
   }
 
   render() {

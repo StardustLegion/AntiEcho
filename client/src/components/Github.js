@@ -7,7 +7,6 @@ class Github extends Component {
   }
 
   render() {
-    console.log('from github', this.props);
     if (this.props.login) {
       return (
         <div id="github">

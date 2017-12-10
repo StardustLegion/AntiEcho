@@ -33,8 +33,6 @@ export const sendWeather = (data) => ({
 export function handleKeyPress(event) {
   return function (dispatch, getState) {
     if (event.charCode === 13) {
-      // console.log('keypressed', event);
-      // console.log('value in textfield is: ', getState().steering.textValue);
       dispatch(onSubmit());
     }
   }
