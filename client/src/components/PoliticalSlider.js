@@ -3,7 +3,6 @@ import Slider from 'material-ui/Slider';
 import logo from './red-blue-line.png'; 
 
 const PoliticalSlider = (props) => {
-  // console.log(props.sliderValue);
   return (
     <div id="slider">
       <Slider
