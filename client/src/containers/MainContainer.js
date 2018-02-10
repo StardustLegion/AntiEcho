@@ -6,6 +6,7 @@ import * as actions from '../actions/actions';
 
 const mapStateToProps = state => ({
   main: state.main,
+  steering: state.steering
 });
 
 const mapDispatchToProps = actions;
@@ -18,10 +19,7 @@ class MainContainer extends Component {
 
   render() {
     return (
-      <div id="mainContainer">
-        <div onClick={this.props.onLoad} id="headerContainer">
-          <p id="header">The Spectrum Report</p>
-        </div>
+      <div id="mainContainer" className='container'>
         <SteeringContainer sliderValue={this.props.main.sliderValue} id="steeringContainer"/>
         <NewsContainer main={this.props.main} id="newsContainer"/>
       </div>

@@ -1,5 +1,6 @@
+import * as jsCookie from 'js-cookie';
 import * as types from '../constants/actionTypes';
-const sourcesObj = require('./../../../server/db/sources');
+const sourcesObj = require('../../../sources');
 
 let feedList = [];
 let allFeed = [];
@@ -9,6 +10,9 @@ const initialState = {
   allFeed: allFeed,
   feedList: feedList,
   sliderValue: 0,
+  userLogin: '',
+  userAvatar: '',
+  userPrefrences: {},
 };
 
 // an array of obj obj = {}.source.id
@@ -21,7 +25,6 @@ const mainReducer = (state = initialState, action) => {
       const sources = Object.keys(sourcesObj)
         .filter(key => sourcesObj[key] >= min && sourcesObj[key] <= max);
       feedList = state.allFeed.filter(article => sources.includes(article.source.id));
-      // console.log('filtered sources', sources);
       feedList = feedList.sort((a, b) => { // sort by date so that most recent stories are on top
         return new Date(b.publishedAt) - new Date(a.publishedAt);
       });
@@ -31,7 +34,6 @@ const mainReducer = (state = initialState, action) => {
         feedList: feedList
       }
     case types.SEARCH_ARTICLES:
-      // console.log('response is: ', action.payload);
       if (action.payload.length === 0) feedList = [];
       else {
         const range = 2;
@@ -63,6 +65,15 @@ const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: true
+      };
+
+    case types.SET_USER:
+      console.log(jsCookie);
+      return {
+        ...state,
+        userLogin: jsCookie.get('login'),
+        userAvatar: jsCookie.get('avatar'),
+        userPrefrences: jsCookie.get('prefrences')
       };
 
     default:

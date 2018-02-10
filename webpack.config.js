@@ -3,7 +3,7 @@ module.exports = {
   output: {
     path: __dirname,
     publicPath: '/',
-    filename: './build/bundle.js',
+    filename: './build/bundle.js'
   },
   module: {
     loaders: [
@@ -12,21 +12,21 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'react', 'stage-0'],
-        },
+          presets: ['es2015', 'react', 'stage-0']
+        }
       },
       {
-        test: /scss$/,
+        test: /css$/,
         exclude: /node_modules/,
-        loaders: ['style', 'css', 'sass'],
+        loaders: ['style-loader', 'css-loader']
       },
       {
         test: /\.jpe?g$|\.gif$|\.png$/i,
-        loader: 'file-loader',
-      },
-    ],
-    resolve: {
-      extensions: ['', '.js', '.jsx'],
-    },
+        loader: 'file-loader'
+      }
+    ]
   },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  }
 };

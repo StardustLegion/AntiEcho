@@ -1,5 +1,5 @@
 const request = require('request');
-const sourcesObj = require('./sources');
+const sourcesObj = require('../../sources');
 const newsAPI = {};
 
 // get news source names from https://newsapi.org/sources
