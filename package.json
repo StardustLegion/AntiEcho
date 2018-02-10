@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon ./server/server.js",
     "build": "./node_modules/.bin/webpack -w",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --compilers js:babel-register ./testing"
   },
   "author": "Henry Au",
   "license": "MIT",
@@ -47,6 +47,7 @@
     "file-loader": "^1.1.5",
     "node-sass": "^3.8.0",
     "nodemon": "^1.12.1",
+    "pathfinder-ui": "^1.0.3",
     "redux-devtools": "^3.4.1",
     "sass-loader": "^3.2.2",
     "style-loader": "^0.13.1"
