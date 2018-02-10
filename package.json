@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./server/server.js",
-    "dev": "webpack-dev-server",
-    "build": "./node_modules/.bin/webpack",
-    "test": "mocha"
+    "build": "./node_modules/.bin/webpack -w",
+    "test": "mocha --compilers js:babel-register ./testing"
   },
   "author": "Team Cheetah",
   "license": "MIT",
@@ -52,6 +51,7 @@
     "file-loader": "^1.1.5",
     "node-sass": "^3.8.0",
     "nodemon": "^1.12.1",
+    "pathfinder-ui": "^1.0.3",
     "react-router-dom": "^4.2.2",
     "redux-devtools": "^3.4.1",
     "sass-loader": "^3.2.2",

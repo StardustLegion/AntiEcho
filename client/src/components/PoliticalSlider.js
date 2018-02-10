@@ -25,7 +25,7 @@ const PoliticalSlider = (props) => {
       fontSize: '1em'
     },
   };
-
+  
   return (
     <div id="slider">
       <Slider

@@ -1,4 +1,5 @@
 require('dotenv').config();
+var pathfinderUI = require('pathfinder-ui');
 const express = require('express');
 const bodyParser = require('body-parser');
 const port = 3000;
@@ -18,12 +19,18 @@ mongoose.connection.once('open', () => {
     console.log('Connected with MongoDB MLab');
 });
 
+app.use('/pathfinder', function(req, res, next){
+    pathfinderUI(app);
+    next();
+  }, pathfinderUI.router);
+
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'http://localhost:8080'); 
     res.header('Access-Control-Allow-Credentials', 'true'); 
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
 });
+
 
 app.use(express.static(`${__dirname}/../`));
 
