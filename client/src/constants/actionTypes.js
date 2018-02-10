@@ -3,3 +3,5 @@ export const HANDLE_SEARCH = "HANDLE_SEARCH";
 export const SLIDER_CHANGE = "SLIDER_CHANGE";
 export const FETCH_POSTS = "FETCH_POSTS";
 export const FILTER_ARTICLES = "FILTER_ARTICLES";
+export const SET_USER = "SET_USER";
+export const SEND_WEATHER = "SEND_WEATHER";

@@ -20,11 +20,19 @@ export const filterArticles = () => ({
   type: types.FILTER_ARTICLES,
 });
 
+
+export const getUserData = () => ({
+  type: types.SET_USER,
+});
+                                  
+export const sendWeather = (data) => ({
+  type: types.SEND_WEATHER,
+  payload: data
+});
+
 export function handleKeyPress(event) {
   return function (dispatch, getState) {
     if (event.charCode === 13) {
-      // console.log('keypressed', event);
-      // console.log('value in textfield is: ', getState().steering.textValue);
       dispatch(onSubmit());
     }
   }
