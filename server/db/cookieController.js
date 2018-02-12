@@ -1,6 +1,7 @@
 const Session = require('./sessionModel');
 const cookieController = {};
 
+// set a cookie when a user logs-in
 cookieController.setCookie = (req,res,next) => {
   res.cookie('login',res.locals.authdata.login);
   res.cookie('avatar',res.locals.authdata.avatar); 
@@ -8,6 +9,7 @@ cookieController.setCookie = (req,res,next) => {
   next();  
 }
 
+// start a sessions when a user logs-in
 cookieController.startSession = (req,res,next) => {
   let loginstore = {
       login: res.locals.authdata.login

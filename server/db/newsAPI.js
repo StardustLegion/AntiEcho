@@ -11,6 +11,7 @@ const dd = today.getDate();
 const mm = today.getMonth() + 1;
 const yyyy = today.getFullYear();
 
+// search news sources for specific term(s)
 newsAPI.apiQuery = (req, res, next) => {
   const options = {
     url: `https://newsapi.org/v2/everything?sources=${sources}&from=${yyyy}-${mm}-${dd - 2}&to=2017-${mm}-${dd}&q=${req.query.q}&apiKey=${process.env.NEWS_APIKEY}`,
@@ -24,6 +25,7 @@ newsAPI.apiQuery = (req, res, next) => {
   });
 };
 
+// get top headlines from news sources
 newsAPI.apiHeadlines = (req, res, next) => {
   const options = {
     url: `https://newsapi.org/v2/top-headlines?sources=${sources}&apiKey=${process.env.NEWS_APIKEY}`,
