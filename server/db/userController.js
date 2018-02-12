@@ -2,6 +2,7 @@ const Sources = require('./../../sources');
 const UserProfileData = require('./userModel');
 const userController = {};
 
+// checks to see if user exists. If so, sends user's preferences
 userController.checkUser = (req,res,next) => {
   UserProfileData.findOne({login: res.locals.authdata.login}, (err, user)=>{
       if(err){
